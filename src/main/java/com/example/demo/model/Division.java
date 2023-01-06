@@ -25,7 +25,7 @@ public class Division {
     @ManyToOne
     @JoinColumn(name = "region_id")
     private Region region;
-
+    
     public void setId(Integer id) {
         this.id = id;
     }
@@ -34,9 +34,17 @@ public class Division {
     }
     public Integer getId() {
         return id;
+        
     }
     public String getName() {
         return name;
+    }
+    public void setRegion(Region region){
+        this.region = region;
+    }
+    
+    public Region getRegion(){
+        return region;
     }
 }
 

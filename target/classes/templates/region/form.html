@@ -4,7 +4,7 @@
     </head>
     <body>
         <div class="container">
-            <!-- /region/save  region dari initialize requestmapping("region") nya trs savenya buat jalanin postmapping("save") -->
+            <!-- /region/save  region dari initialize requestmapping("region") nya trs savenya buat jalanin postmapping("save"), ${region} buat passing data dri classnya-->
             <form th:action="@{/region/save}" method = "post" th:object="${region}">
                 <div class="form-group" hidden>
                     <label for="Id" class = "col-form-label">ID</label>

@@ -9,14 +9,16 @@
                 <tr>
                     <th>ID</th>
                     <th>NAME</th>
+                    <th>REGION NAME</th>
                     <th>ACTION</th>
                 </tr>
                 <tbody>
                     <!-- foreach (penampung : sumber) -->
-                    <!-- sumbernya regions dari di controller yg addattribute -->
+                    <!-- sumbernya divisions dari di controller yg addattribute -->
                     <tr th:each = "division:  ${divisions}">
                         <td th:text = "${division.id}"></td>
                         <td th:text = "${division.name}"></td>
+                        <td th:text = "${division.region.name}"></td>
                         <td>
                             <a class = "btn btn_primary" th:href="@{division/form/{id}(id = ${division.id})}">Edit</a>
                             |

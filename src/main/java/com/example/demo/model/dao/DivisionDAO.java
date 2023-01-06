@@ -10,6 +10,7 @@ import java.util.List;
 import org.springframework.lang.Nullable;
 
 import com.example.demo.model.Division;
+import com.example.demo.model.Region;
 
 public class DivisionDAO {
     private Connection connection;
@@ -21,13 +22,17 @@ public class DivisionDAO {
 
     public List<Division> getAll(){
         List<Division> divisions = new ArrayList<>();
-        String query = "SELECT * FROM tb_m_division";
+        String query = "SELECT * FROM tb_m_division JOIN tb_m_region ON tb_m_division.region_id = tb_m_region.id;";
         try {
             ResultSet resultSet = connection.prepareStatement(query).executeQuery();
             while (resultSet.next()) {
                 Division division = new Division();
+                Region region = new Region();
+                region.setId(resultSet.getInt(3));
+                region.setName(resultSet.getString(5));
                 division.setId(resultSet.getInt(1));
                 division.setName(resultSet.getString(2));
+                division.setRegion(region);
                 divisions.add(division);
             }
         } catch (SQLException e) {
