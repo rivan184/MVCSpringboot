@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <!-- /region/save  region dari initialize requestmapping("region") nya trs savenya buat jalanin postmapping("save") -->
+            <form th:action="@{/region/save}" method = "post" th:object="${region}">
+                <div class="form-group" hidden>
+                    <label for="Id" class = "col-form-label">ID</label>
+                    <input type="text" class = "form-control" id = "id" th:field="*{id}">
+                    <!-- id disini harus sesuai sama variabel di model bkn column id -->
+                </div>
+                <div class="form-group col-md-4">
+                    <label for="Name" class="col-form-label">NAME</label>
+                    <input type="text" class = "form-control" id = "name" th:field = "*{name}">
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </body>
+
+</html>

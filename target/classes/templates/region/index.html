@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    </head>
+    <body>
+        <div class="container">
+            <a class = "btn btn-primary" style = "margin-bottom: 10px; margin-top: 10px; color:azure;" th:href="@{/region/form}">CREATE NEW</a>
+            <table class="table">
+                <tr>
+                    <th>ID</th>
+                    <th>NAME</th>
+                    <th>ACTION</th>
+                </tr>
+                <tbody>
+                    <!-- foreach (penampung : sumber) -->
+                    <!-- sumbernya regions dari di controller yg addattribute -->
+                    <tr th:each = "region:  ${regions}">
+                        <td th:text = "${region.id}"></td>
+                        <td th:text = "${region.name}"></td>
+                        <td>
+                            <a class = "btn btn_primary" th:href="@{region/form/{id}(id = ${region.id})}">Edit</a>
+                            |
+                            <form th:action="@{/region/delete/{id}(id=${region.getId})}" th:method="post" th:object = ${region}>
+                                <button type="submit" class="btn btn-danger" onclick= "return confirm('delete this?')">Delete</button>
+
+                            </form>
+                            <!-- <a th:action = "@{/region/delete}" th:method = "post" th:object = "${region}">Delete</a> -->
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>   
+    </body>
+</html>
