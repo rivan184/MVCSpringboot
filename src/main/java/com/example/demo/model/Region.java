@@ -9,10 +9,10 @@ import javax.persistence.*;
 @Table(name = "tb_m_region")
 public class Region {
     @Id
-    @Column(name = "id nya region")
+    @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    @Column(name = "namenya region", nullable = false)
+    @Column(name = "name", nullable = false)
     private String name;
 
     @OneToMany(mappedBy = "region")
