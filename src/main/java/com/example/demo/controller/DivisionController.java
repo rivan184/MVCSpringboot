@@ -7,9 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import com.example.demo.dao.DivisionDAO;
 import com.example.demo.model.DbConnection;
 import com.example.demo.model.Division;
-import com.example.demo.model.dao.DivisionDAO;
 
 @Controller
 @RequestMapping("division")

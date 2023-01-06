@@ -7,10 +7,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
-
+import com.example.demo.dao.RegionDAO;
 import com.example.demo.model.DbConnection;
 import com.example.demo.model.Region;
-import com.example.demo.model.dao.RegionDAO;
 
 //request mapping region buat auto tambah tulisan reigon di url localhost:8088/region untuk setiap method di regioncontroller, jadi kalo getmapping kosong langsung kebaca /region, yg "form" kebaca region/form
 // tulis /region ato region aja sama 
