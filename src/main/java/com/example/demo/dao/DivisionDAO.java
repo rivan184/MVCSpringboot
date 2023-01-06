@@ -43,9 +43,13 @@ public class DivisionDAO {
 
     public boolean insert(@Nullable Division division){
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_m_division (name) VALUES(?)");
+            PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_m_division (name,region_id) VALUES(?,?)");
             //(id,name) harus sesuai sama yg di tabel region id namenya
             preparedStatement.setString(1, division.getName());
+            Region region = new Region();
+            region.setId(20);
+            division.setRegion(region);
+            preparedStatement.setInt(2, division.getRegion().getId());
             int temp = preparedStatement.executeUpdate();
             return temp > 0;
         } catch (SQLException e) {
