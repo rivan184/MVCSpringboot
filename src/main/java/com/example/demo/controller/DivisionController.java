@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.example.demo.dao.DivisionDAO;
+import com.example.demo.dao.RegionDAO;
 import com.example.demo.model.DbConnection;
 import com.example.demo.model.Division;
 
@@ -15,10 +16,12 @@ import com.example.demo.model.Division;
 @RequestMapping("division")
 public class DivisionController {
     private DivisionDAO ddao = new DivisionDAO(DbConnection.getConnection());
+    private RegionDAO rdao = new RegionDAO(DbConnection.getConnection());
 
     @GetMapping
     public String index(Model model){
         model.addAttribute("divisions", ddao.getAll());
+        model.addAttribute("regions", rdao.getAll());
         return "division/index";
     }
 

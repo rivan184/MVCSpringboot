@@ -47,7 +47,7 @@ public class DivisionDAO {
             //(id,name) harus sesuai sama yg di tabel region id namenya
             preparedStatement.setString(1, division.getName());
             Region region = new Region();
-            region.setId(20);
+            region.setId(1);
             division.setRegion(region);
             preparedStatement.setInt(2, division.getRegion().getId());
             int temp = preparedStatement.executeUpdate();
@@ -60,9 +60,10 @@ public class DivisionDAO {
 
     public boolean update(Division division){
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_m_division SET name = ? WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_m_division SET name = ? region_id = ? WHERE id = ?");
             preparedStatement.setString(1, division.getName());
-            preparedStatement.setInt(2, division.getId());
+            preparedStatement.setInt(2, division.getRegion().getId());
+            preparedStatement.setInt(3, division.getId());
             int temp = preparedStatement.executeUpdate();
             return temp > 0;
         } catch (SQLException e) {
