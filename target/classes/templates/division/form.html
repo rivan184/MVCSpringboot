@@ -11,12 +11,23 @@
                     <input type="text" class = "form-control" id = "id" th:field="*{id}">
                     <!-- id disini harus sesuai sama variabel di model bkn column id -->
                 </div>
+                <!-- <div class="form-group" hidden>
+                    <label for="Id" class = "col-form-label">ID</label>
+                    <input type="text" class = "form-control" id = "id" th:field="*{region.id}">
+                </div> -->
                 <div class="form-group col-md-4">
                     <label for="Name" class="col-form-label">NAME</label>
                     <input type="text" class = "form-control" id = "name" th:field = "*{name}">
                 </div>
+                <div class="form-group col-md-4">
+                    <select class="form-control" id="regionIndexForm" th:field = "*{region.id}">
+                        <option th:each = "region: ${region}" th:text= "${region.name}" th:value = "${region.id}"></option>
+                    </select>
+                </div>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </form>
+
+        
         </div>
     </body>
 

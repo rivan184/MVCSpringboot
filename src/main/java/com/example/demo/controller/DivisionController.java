@@ -21,7 +21,6 @@ public class DivisionController {
     @GetMapping
     public String index(Model model){
         model.addAttribute("divisions", ddao.getAll());
-        model.addAttribute("regions", rdao.getAll());
         return "division/index";
     }
 
@@ -33,8 +32,10 @@ public class DivisionController {
         if (id!=null) {
             division = ddao.getById(id);
             model.addAttribute("division", division);
+            model.addAttribute("region", rdao.getAll());
         }else{
             model.addAttribute("division", division);
+            model.addAttribute("region", rdao.getAll());
         }
 
         return "division/form";

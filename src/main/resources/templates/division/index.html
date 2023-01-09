@@ -18,14 +18,7 @@
                     <tr th:each = "division:  ${divisions}">
                         <td th:text = "${division.id}"></td>
                         <td th:text = "${division.name}"></td>
-                        <td>
-                            <form th:action="@{/division/save}" th:method = "post" th:object ="${division}">
-                                <select class="form-control" id="regionIndexForm">
-                                    <option th:each = "region: ${regions}" th:text= "${region.name}" th:selected ="${division.region.id}"></option>
-                                </select>
-                            </form>
-                            
-                        </td>
+                        <td th:text = "${division.region.name}"></td>
                         <td>
                             <a class = "btn btn_primary" th:href="@{division/form/{id}(id = ${division.id})}">Edit</a>
                             |

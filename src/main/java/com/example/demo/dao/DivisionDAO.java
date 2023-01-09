@@ -46,9 +46,6 @@ public class DivisionDAO {
             PreparedStatement preparedStatement = connection.prepareStatement("INSERT INTO tb_m_division (name,region_id) VALUES(?,?)");
             //(id,name) harus sesuai sama yg di tabel region id namenya
             preparedStatement.setString(1, division.getName());
-            Region region = new Region();
-            region.setId(1);
-            division.setRegion(region);
             preparedStatement.setInt(2, division.getRegion().getId());
             int temp = preparedStatement.executeUpdate();
             return temp > 0;
@@ -60,7 +57,7 @@ public class DivisionDAO {
 
     public boolean update(Division division){
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_m_division SET name = ? region_id = ? WHERE id = ?");
+            PreparedStatement preparedStatement = connection.prepareStatement("UPDATE tb_m_division SET name = ?,region_id = ? WHERE id = ?");
             preparedStatement.setString(1, division.getName());
             preparedStatement.setInt(2, division.getRegion().getId());
             preparedStatement.setInt(3, division.getId());
@@ -93,8 +90,12 @@ public class DivisionDAO {
             preparedStatement.setInt(1, id);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()) {
+                Region region = new Region();
+                division.setRegion(region);
+                region.setId(resultSet.getInt(3));
                 division.setId(resultSet.getInt(1));
                 division.setName(resultSet.getString(2));
+                
             }
         } catch (SQLException e) {
             e.printStackTrace();
